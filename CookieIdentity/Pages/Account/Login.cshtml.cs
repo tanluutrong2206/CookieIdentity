@@ -39,6 +39,7 @@ namespace CookieIdentity.Pages.Account
                     new Claim(ClaimTypes.Name, "admin"),
                     new Claim(ClaimTypes.Email, "admin@gmail.com"),
                     new Claim("Admin", "true"),
+                    new Claim(Constant.EMPLOYMENT_DATE, "2021-01-22"),
                 };
                 var identity = new ClaimsIdentity(claims, Constant.COOKIE_NAME);
                 var claimPrinciple = new ClaimsPrincipal(identity);

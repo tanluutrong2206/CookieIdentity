@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CookieIdentity.AppCode
+﻿namespace CookieIdentity.AppCode
 {
     public class Constant
     {
         public const string COOKIE_NAME = "MyCookie";
+        public const string EMPLOYMENT_DATE = "EmploymentDate";
     }
 }

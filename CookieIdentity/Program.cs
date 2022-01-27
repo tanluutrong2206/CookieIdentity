@@ -1,4 +1,7 @@
 using CookieIdentity.AppCode;
+using CookieIdentity.Authorization;
+
+using Microsoft.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +16,10 @@ services.AddAuthentication(Constant.COOKIE_NAME)
 services.AddAuthorization(configure =>
 {
     configure.AddPolicy("AdminOnly", policy => policy.RequireClaim("Admin"));
+    configure.AddPolicy("HRManager", policy => policy.Requirements.Add(new HRManagerProbationRequirement(3)));
 });
+services.AddSingleton<IAuthorizationHandler, HRManagerProbationRequirementHandler>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
