@@ -3,3 +3,25 @@
 @{
 }
 <h1>HR Managerment</h1>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Temp C</th>
+            <th>Temp F</th>
+            <th>Summary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.WeatherForecastDtos)
+        {
+            <tr>
+
+                <td>@item.Date</td>
+                <td>@item.TemperatureC</td>
+                <td>@item.TemperatureF</td>
+                <td>@item.Summary</td>
+            </tr>
+        }
+    </tbody>
+</table>

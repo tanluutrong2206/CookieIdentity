@@ -24,6 +24,17 @@ services.AddAuthorization(configure =>
 });
 services.AddSingleton<IAuthorizationHandler, HRManagerProbationRequirementHandler>();
 
+services.AddHttpClient("WebAPI", client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7225/");
+});
+services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromHours(8);
+    options.Cookie.IsEssential = true;
+    options.Cookie.HttpOnly = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -41,6 +52,7 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseSession();
 
 app.MapRazorPages();
 
