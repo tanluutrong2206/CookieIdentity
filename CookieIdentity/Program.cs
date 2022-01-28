@@ -12,6 +12,10 @@ services.AddAuthentication(Constant.COOKIE_NAME)
     .AddCookie(Constant.COOKIE_NAME, options =>
     {
         options.Cookie.Name = Constant.COOKIE_NAME;
+        options.ExpireTimeSpan = TimeSpan.FromSeconds(20);
+        options.SlidingExpiration = true;
+        options.LoginPath = "/Account/Login";   // Default
+        options.LogoutPath = "/Account/Logout";  // Default
     });
 services.AddAuthorization(configure =>
 {

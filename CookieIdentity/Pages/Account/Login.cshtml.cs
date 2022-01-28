@@ -43,9 +43,14 @@ namespace CookieIdentity.Pages.Account
                 };
                 var identity = new ClaimsIdentity(claims, Constant.COOKIE_NAME);
                 var claimPrinciple = new ClaimsPrincipal(identity);
-                await HttpContext.SignInAsync(Constant.COOKIE_NAME, claimPrinciple);
+                await HttpContext.SignInAsync(Constant.COOKIE_NAME, claimPrinciple,
+                    properties: new AuthenticationProperties
+                    {
+                        IsPersistent = Credential.RememberMe
+                    });
                 return Redirect("/Index");
-            } else
+            }
+            else
             {
                 return Page();
             }
